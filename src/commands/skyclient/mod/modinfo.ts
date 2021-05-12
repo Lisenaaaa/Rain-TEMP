@@ -46,8 +46,9 @@ export default class modinfo extends BotCommand {
         if (url) {
             if (url == 'https://optifine.net/download?f=OptiFine_1.8.9_HD_U_M5.jar') {
                 modinfoembed.addField(`Direct Download`, `Would be here, but I don't want to get into legal issues with SP, so go find it yourself.`)
+            } else {
+                modinfoembed.addField("Direct Download", `[Click here!](${url})`);
             }
-            modinfoembed.addField("Direct Download", `[Click here!](${url})`);
             let size = parseInt((await axios.head(url)).headers["content-length"], 10);
             if (size) {
                 modinfoembed.addField("Size", `${prettyBytes(size)}`);
