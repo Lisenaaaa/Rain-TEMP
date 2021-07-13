@@ -61,7 +61,7 @@ export default class modInfo extends BotCommand {
                 url = `https://github.com/nacrt/SkyblockClient-REPO/blob/main/files/mods/${encodeURIComponent(mod.file)}?raw=true`
             }
             modInfoEmbed.addField('Direct Download', `[${file}](${url})`)
-            let size = parseInt((await axios.head(url)).headers['content-length'], 10)
+            let size = parseInt((await axios.get(url)).headers['content-length'], 10)
             if (size) {
                 modInfoEmbed.addField('Size', `${prettyBytes(size)}`)
             }
