@@ -51,12 +51,13 @@ export default class modInfo extends BotCommand {
             if (mod.creator) modEmbed.setFooter(`Created by ${mod.creator}`)
 
             msgutils.reply(message, { embeds: [modEmbed] })
-        } catch {
+        } catch (error) {
             
             const modEmbedError = new MessageEmbed()
             .setTitle("Invalid ID")
             .setDescription(`There doesn't seem to be a mod in our repo with the ID \`${args.mod}\`.\nTry again with a new ID, or browse the repository by clicking the title of this embed.`)
             
+            msgutils.reply(message, { embeds: [modEmbedError] })
         }
     }
 }
